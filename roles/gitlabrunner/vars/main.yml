@@ -1,4 +1,0 @@
-gitlab_runner_name: gitlabrunnername
-gitlab_url: https://www.gitlab.com/
-gitlab_registration_token: exampletoken
-gitlab_runner_user: gitlab-runner

@@ -1,0 +1,10 @@
+---
+- name: Install Kubernetes on Lightsail Instances
+  hosts: kubernetes_servers
+  become: true
+
+  roles:
+    - docker
+    - kub
+    - aws-cli
+

@@ -1,0 +1,13 @@
+---
+- name: Install and Configure AWS CLI on Lightsail Instances
+  hosts: lightsail_instances
+  become: true
+
+  tasks:
+    - name: Install AWS CLI
+      apt:
+        name: awscli
+        state: present
+
+    - name: Configure AWS CLI
+      command: aws configure set aws_access_key_id {{ aws_access_key_id }} && aws configure set aws_secret_access_key {{ aws_secret_access_key }} && aws configure set default.region {{ default.region }} && aws configure set output {{ output }}

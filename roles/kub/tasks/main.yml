@@ -1,0 +1,25 @@
+---
+- name: Add Kubernetes apt-key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+
+- name: Add Kubernetes apt repository
+  apt_repository:
+    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
+
+- name: Install Kubernetes packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - kubelet
+    - kubeadm
+    - kubectl
+
+- name: Enable kubelet service
+  systemd:
+    name: kubelet
+    enabled: yes
+    state: started
